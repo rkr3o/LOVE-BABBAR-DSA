@@ -10,7 +10,7 @@ int lucifer(vector<int> vect, int n)
     {
         mid = l + (h - l) / 2;
 
-        if (vect[mid] < vect[mid + 1])
+        if ( vect[mid] < vect[mid + 1])
         {
             l = mid + 1;
         }

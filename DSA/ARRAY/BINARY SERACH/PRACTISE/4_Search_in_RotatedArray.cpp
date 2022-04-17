@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// find pivot
-int getPivot(int arr[], int n)
+int getPivot(vector<int> &arr, int n)
 {
     int l = 0, h = n - 1, mid;
 
@@ -18,15 +17,12 @@ int getPivot(int arr[], int n)
     }
     return l;
 }
-int BinSearch(int arr[], int n, int key)
+
+int BinSearch(vector<int> &arr, int n, int key)
 {
-    int start = 0;
-    int end = n - 1;
-
-    while (start <= end)
+    int l = 0, h = n - 1, mid;
+    while (l <= h)
     {
-
-        int mid = (start + end) / 2;
         if (arr[mid] == key)
         {
             return mid;
@@ -34,41 +30,44 @@ int BinSearch(int arr[], int n, int key)
 
         if (key > arr[mid])
         {
-            start = mid + 1;
+            l = mid + 1;
         }
         else
-            end = mid - 1;
+            h = mid - 1;
     }
-
-    return -1;
+    return mid;
 }
 
-int result(int arr[], int n, int key)
-{
-    int pivot = getPivot(arr, n);
+int result(vector<int> arr , int n , int key )
+{ 
+    int piv = getPivot(arr , n );
 
-    if (key > pivot and key < arr[n - 1])
+    if(key > piv and key <= arr[n-1]) 
     {
-        return BinSearch(arr ,  n , key);
+        return BinSearch(arr , n  , key);
     }
-    else 
-    return BinSearch(arr , )
+    else return BinSearch(arr , n , key );
 }
+
 int main()
 {
     int n;
     cin >> n;
-    int arr[n];
     int key;
     cin >> key;
+    vector<int> arr;
 
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        int a;
+        cin >> a;
+
+        arr.push_back(a);
     }
 
     getPivot(arr, n);
-    BinSearch(arr, n, key);
-
-    result(arr, n, key);
+    BinSearch(arr , n , key); 
+    
+    cout<<result(arr , n , key);
+    
 }
